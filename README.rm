@@ -1,0 +1,23 @@
+This is self-designed generic doubly LinkedList.
+
+
+Supported functions:
+add					- add to the list
+addAll				- add a collection to the list
+iterator			- iterate next and previous
+contains			- find specific item
+containsAll			- find specific items within a collection
+remove				- remove item
+removeAll			- remove multiple items
+retainAll			- keep items
+toArray				- convert to object[]
+toArray(generic)	- convert generic type array[]
+
+
+Unspport functions:
+- add an element using iterator
+- remove an element using iterator 
+- replace an element using iterator
+
+
+March 30, 2017
