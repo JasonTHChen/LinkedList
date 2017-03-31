@@ -15,10 +15,20 @@ This is self-designed generic doubly LinkedList.
 - convert generic type array[]
 
 
-## Unspport functions:
+## Unspported functions:
 - add an element using iterator
 - remove an element using iterator 
 - replace an element using iterator
+
+### Bug Fixed:
+#### remove
+```
+remove only the first occurrence of the element in the list
+```
+#### removeAll
+```
+removeAll the elements that are in the list
+```
 
 
 March 30, 2017
