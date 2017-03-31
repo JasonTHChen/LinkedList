@@ -11,18 +11,21 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
 import java.util.Random;
+
+import list.LinkedList;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import list.linkedlist.LinkedList;
+
 
 
 /**
  * Tests the class LinkedList.
  * 
  * @author Tzu Hsiang Chen (Jason)
- * @version 1.0
+ * @version 1.1
  * @since March 23, 2017
  *
  */
@@ -194,12 +197,11 @@ public class LinkedListTest {
         for (String value : test2) {
             myLinkedList.add(value);
         }
+        
         List<String> retainItems = Arrays.asList("apple", "car");
         myLinkedList.retainAll(retainItems);
         assertTrue(myLinkedList.contains("apple"));
         assertFalse(myLinkedList.contains("fish"));
-        assertNotNull(myLinkedList.getTail());
-        assertNotNull(myLinkedList.getHead());
         assertEquals(myLinkedList.size(), 3);
         
         int appear = 0;
@@ -209,6 +211,18 @@ public class LinkedListTest {
             }
         }
         assertEquals(appear, 2);
+        
+        myLinkedList.clear();
+        
+        for (String value : test2) {
+            myLinkedList.add(value);
+        }
+        
+        List<String> newRetainItems = Arrays.asList("fish", "car");
+        myLinkedList.retainAll(newRetainItems);
+        assertTrue(myLinkedList.contains("fish"));
+        assertFalse(myLinkedList.contains("apple"));
+        assertEquals(myLinkedList.size(), 2);
     }
 
     

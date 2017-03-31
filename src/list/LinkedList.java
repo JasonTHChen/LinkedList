@@ -1,4 +1,5 @@
-package list.linkedlist;
+package list;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.ListIterator;
@@ -11,7 +12,7 @@ import java.util.NoSuchElementException;
  * The list can also be iterated forward and backward.
  * 
  * @author Tzu Hsiang Chen (Jason)
- * @version 1.0
+ * @version 1.1
  * @since March 23, 2017
  *
  */
@@ -285,7 +286,6 @@ public class LinkedList<E> implements Collection<E> {
      */
     @Override
     public boolean remove(Object object) {
-        boolean removed = false;
         Node temp = head;
         while (temp != null) {
             if (temp.getElement().equals(object)) {
@@ -301,10 +301,11 @@ public class LinkedList<E> implements Collection<E> {
                     prevNode.setNext(nextNode);
                     nextNode.setPrevious(prevNode);
                 }
+                return true;
             }
             temp = temp.getNext();
         }
-        return removed;
+        return false;
     }
 
     /**
@@ -315,11 +316,13 @@ public class LinkedList<E> implements Collection<E> {
      */
     @Override
     public boolean removeAll(Collection<?> collection) {
+        Node temp = head;
         boolean removed = false;
-        for (Object object : collection) {
-            if (this.remove(object)) {
-                removed = true;
+        while (temp != null) {
+            if (collection.contains(temp.getElement())) {
+                removed = this.remove(temp.getElement());
             }
+            temp = temp.getNext();
         }
         return removed;
     }
@@ -335,9 +338,8 @@ public class LinkedList<E> implements Collection<E> {
         boolean removed = false;
         Node temp = head;
         while (temp != null) {
-            if (!collection.contains(temp.element)) {
-                this.remove(temp.element);
-                removed = true;
+            if (!collection.contains(temp.getElement())) {
+                removed = this.remove(temp.getElement());
             }
             
             temp = temp.getNext();
